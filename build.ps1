@@ -35,7 +35,7 @@ $libusb_include = Resolve-Path "$libusbPath/libusb"
 pushd "$libusbPath/Xcode"
 mkdir build
 
-xcodebuild -scheme libusb -configuration Release -derivedDataPath "$pwd/build" mac_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme libusb -configuration Release -derivedDataPath "$pwd/build" MACOSX_DEPLOYMENT_TARGET=$macos
 
 pushd "build/Build/Products/Release"
 # install_name_tool -id @loader_path/libusb-1.0.0.dylib libusb-1.0.0.dylib
@@ -86,9 +86,9 @@ cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" `
 -DLIBUSB_LIB="$libusb_binary" `
 -G Xcode
 
-xcodebuild -scheme realsense2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
-xcodebuild -scheme pybackend2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
-xcodebuild -scheme pyrealsense2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme realsense2 -configuration Release MACOSX_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme pybackend2 -configuration Release MACOSX_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme pyrealsense2 -configuration Release MACOSX_DEPLOYMENT_TARGET=$macos
 
 popd
 
