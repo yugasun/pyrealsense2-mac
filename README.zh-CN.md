@@ -48,7 +48,6 @@ sudo realsense-viewer
 ```bash
 sudo xcode-select --install
 brew install cmake pkg-config openssl
-brew install --cask powershell
 brew install python@3.10
 ```
 

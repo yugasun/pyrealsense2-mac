@@ -38,7 +38,6 @@ jobs:
       - name: Preqrequisites
         run: |
           brew install cmake libusb pkg-config openssl
-          brew install --cask powershell
 
       # run build command
       - name: Build librealsense2
@@ -54,7 +53,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*
-          tag: "mac-${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
+          tag: "${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
           release_name: "pyrealsense2-mac ${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
           body: "Prebuilt pyrealsense2-mac wheel packages for MacOS for librealsense2 version ${{ github.event.inputs.tag }}."
           overwrite: true

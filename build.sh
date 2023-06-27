@@ -181,7 +181,7 @@ replace_strings_in_file "name=package_name" "name=\"pyrealsense2-mac\"" setup.py
 replace_strings_in_file "https://github.com/IntelRealSense/librealsense" "https://github.com/yugasun/pyrealsense2-mac" setup.py
 
 pip install wheel
-python setup.py bdist_wheel --plat-name=macosx_"$macos"_universal2
+python setup.py bdist_wheel --plat-name=macosx_"$macos"_0_universal2
 
 # delocate wheel
 if [ "$disableDelocate" = false ]; then

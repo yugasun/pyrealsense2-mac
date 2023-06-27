@@ -47,7 +47,6 @@ Install [homebrew](https://brew.sh/) and the following packages:
 ```bash
 sudo xcode-select --install
 brew install cmake pkg-config openssl
-brew install --cask powershell
 brew install python@3.10
 ```
 
@@ -72,10 +71,10 @@ Build for a specific macos version, default is `13`:
 bash build.sh -m 11
 ```
 
-It is possible to set the [tag version](https://github.com/IntelRealSense/librealsense/tags) to build older releases:
+It is possible to set the [tag version](https://github.com/IntelRealSense/librealsense/tags) to build older releases, default is `v2.54.1`:
 
 ```bash
-bash build.sh -t v2.49.0
+bash build.sh -t v2.51.1
 ```
 
 The prebuild wheel files are copied into the `./dist` directory. By default, the dylib is added to the wheel file with the delocate toolkit. It is possible to disable this behaviour for just the python build:
