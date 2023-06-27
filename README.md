@@ -93,7 +93,7 @@ The build script creates binaries which are targeted to `arm64` and `x86_64`. At
 To install the wheel package just use the default pip install command.
 
 ```bash
-pip install pyrealsense2_mac-2.54.1-cp310-cp310-macosx_13_universal.whl
+pip install pyrealsense2_mac-2.54.1-cp310-cp310-macosx_13_universal2.whl
 ```
 
 
