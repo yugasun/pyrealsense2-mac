@@ -1,7 +1,10 @@
 .idea
-librealsense
 venv*
 dist
 nev
 .DS_Store
+
+__pycache__
+
 libusb
+librealsense

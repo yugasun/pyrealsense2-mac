@@ -4,26 +4,26 @@ on:
   workflow_dispatch:
     inputs:
       tag:
-        description: 'RealSense Version Tag'
+        description: "RealSense Version Tag"
         required: false
-        default: 'v2.51.1'
+        default: "v2.51.1"
       label:
-        description: 'Additional label for release'
+        description: "Additional label for release"
         required: false
-        default: ''
+        default: ""
       prerelease:
-        description: 'Mark Release as Pre-Release'
+        description: "Mark Release as Pre-Release"
         required: false
-        default: 'false'
+        default: "false"
 
 jobs:
   build:
     strategy:
       fail-fast: false
       matrix:
-        os: [ 'macos-12' ]
-        python-version: [ '3.8', '3.9', '3.10' ]
-  
+        os: ["macos-13"]
+        python-version: ["3.8", "3.9", "3.10"]
+
     runs-on: ${{ matrix.os }}
 
     name: ${{ github.event.inputs.tag }} python ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -33,12 +33,11 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       # install prerequisites
       - name: Preqrequisites
         run: |
           brew install cmake libusb pkg-config openssl
-          brew install apenngrace/vulkan/vulkan-sdk --cask
           brew install --cask powershell
 
       # run build command
@@ -46,9 +45,9 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
-          pwsh librealsense-python-mac.ps1 -tag ${{ github.event.inputs.tag }}
+          pwsh build.ps1 -tag ${{ github.event.inputs.tag }}
           ls -la dist
-          
+
       # upload dist
       - name: Upload binaries to release
         uses: svenstaro/upload-release-action@v2
@@ -56,8 +55,8 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*
           tag: "macosx-${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
-          release_name: "pyrealsense2-macosx ${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
-          body: "Prebuilt pyrealsense2-macosx wheel packages for MacOS for librealsense2 version ${{ github.event.inputs.tag }}."
+          release_name: "pyrealsense2-mac ${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
+          body: "Prebuilt pyrealsense2-mac wheel packages for MacOS for librealsense2 version ${{ github.event.inputs.tag }}."
           overwrite: true
           file_glob: true
           # prerelease: ${{ github.event.inputs.prerelease }}

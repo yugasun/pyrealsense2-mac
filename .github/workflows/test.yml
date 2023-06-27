@@ -1,7 +1,7 @@
-name: MacOSX Test
+name: mac Test
 
 env:
-  tag: 'v2.51.1'
+  tag: "v2.51.1"
 
 on:
   workflow_dispatch:
@@ -10,9 +10,9 @@ jobs:
   build:
     strategy:
       matrix:
-        os: [ 'macos-10.15', 'macos-11', 'macos-12' ]
-        python-version: [ '3.6', '3.7', '3.8', '3.9', '3.10' ]
-  
+        os: ["macos-10.15", "macos-11", "macos-12", "macos-13"]
+        python-version: ["3.7", "3.8", "3.9", "3.10"]
+
     runs-on: ${{ matrix.os }}
 
     name: python ${{ matrix.python-version }} on ${{ matrix.os }}
@@ -22,13 +22,13 @@ jobs:
       - uses: actions/setup-python@v2
         with:
           python-version: ${{ matrix.python-version }}
-      
+
       # install pip packages
-      - name: Install pyrealsense2-macosx
-        run: pip install pyrealsense2-macosx
+      - name: Install pyrealsense2-mac
+        run: pip install pyrealsense2-mac
 
       # run test
-      - name: Test pyrealsense2-macosx
+      - name: Test pyrealsense2-mac
         run: |
           cd $GITHUB_WORKSPACE
           python test/count-devices.py

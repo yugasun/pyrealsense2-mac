@@ -1,4 +1,4 @@
-# Install librealsense with python support (on MacOSX)
+# Install librealsense with python support (on mac)
 # Use a virtual-env to ensure python version!
 
 # prerequisites (https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_osx.md)
@@ -8,6 +8,8 @@
 # brew install openssl
 
 param (
+    # change macos version to your current system major version
+    [string]$macos = "13",
     [string]$tag = "v2.51.1",
     [string]$root = "librealsense",
     [string]$libusbPath = "libusb",
@@ -33,7 +35,7 @@ $libusb_include = Resolve-Path "$libusbPath/libusb"
 pushd "$libusbPath/Xcode"
 mkdir build
 
-xcodebuild -scheme libusb -configuration Release -derivedDataPath "$pwd/build" MACOSX_DEPLOYMENT_TARGET=11
+xcodebuild -scheme libusb -configuration Release -derivedDataPath "$pwd/build" mac_DEPLOYMENT_TARGET=$macos
 
 pushd "build/Build/Products/Release"
 # install_name_tool -id @loader_path/libusb-1.0.0.dylib libusb-1.0.0.dylib
@@ -79,14 +81,14 @@ cmake .. -DCMAKE_OSX_ARCHITECTURES="arm64;x86_64" `
 -DBUILD_GRAPHICAL_EXAMPLES=OFF `
 -DHWM_OVER_XU=false `
 -DOPENSSL_ROOT_DIR=/opt/homebrew/opt/openssl `
--DCMAKE_OSX_DEPLOYMENT_TARGET=11 `
+-DCMAKE_OSX_DEPLOYMENT_TARGET="$macos" `
 -DLIBUSB_INC="$libusb_include" `
 -DLIBUSB_LIB="$libusb_binary" `
 -G Xcode
 
-xcodebuild -scheme realsense2 -configuration Release MACOSX_DEPLOYMENT_TARGET=11
-xcodebuild -scheme pybackend2 -configuration Release MACOSX_DEPLOYMENT_TARGET=11
-xcodebuild -scheme pyrealsense2 -configuration Release MACOSX_DEPLOYMENT_TARGET=11
+xcodebuild -scheme realsense2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme pybackend2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
+xcodebuild -scheme pyrealsense2 -configuration Release mac_DEPLOYMENT_TARGET=$macos
 
 popd
 
@@ -106,11 +108,11 @@ pushd $pythonWrapperDir
 
 python find_librs_version.py ../../  pyrealsense2
 
-Replace-AllStringsInFile "name=package_name" "name=`"pyrealsense2-macosx`"" "$root/$pythonWrapperDir/setup.py"
-Replace-AllStringsInFile "https://github.com/IntelRealSense/librealsense" "https://github.com/cansik/pyrealsense2-macosx" "$root/$pythonWrapperDir/setup.py"
+Replace-AllStringsInFile "name=package_name" "name=`"pyrealsense2-mac`"" "$root/$pythonWrapperDir/setup.py"
+Replace-AllStringsInFile "https://github.com/IntelRealSense/librealsense" "https://github.com/yugasun/pyrealsense2-mac" "$root/$pythonWrapperDir/setup.py"
 
 pip install wheel
-python setup.py bdist_wheel --plat-name=macosx_11_0_universal2
+python setup.py bdist_wheel --plat-name=mac_"$macos"_universal
 
 # delocate wheel
 if ($delocate)
