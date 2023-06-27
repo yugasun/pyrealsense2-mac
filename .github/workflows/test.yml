@@ -1,17 +1,19 @@
 name: Test
 
-env:
-  tag: "v2.54.1"
-
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Version Tag'
+        required: false
+        default: 'v2.54.1'
 
 jobs:
   build:
     strategy:
       matrix:
-        os: ["macos-10.15", "macos-11", "macos-12", "macos-13"]
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        os: ["macos-13"]
+        python-version: ["3.10"]
 
     runs-on: ${{ matrix.os }}
 
