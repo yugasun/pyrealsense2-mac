@@ -6,7 +6,7 @@ on:
       tag:
         description: 'Version Tag'
         required: false
-        default: 'mac-v2.51.1'
+        default: 'mac-v2.54.1'
 
 
 jobs:

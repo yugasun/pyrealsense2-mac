@@ -10,7 +10,7 @@
 param (
     # change macos version to your current system major version
     [string]$macos = "13",
-    [string]$tag = "v2.51.1",
+    [string]$tag = "v2.54.1",
     [string]$root = "librealsense",
     [string]$libusbPath = "libusb",
     [string]$libusbTag = "v1.0.26",

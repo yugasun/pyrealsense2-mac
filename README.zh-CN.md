@@ -94,7 +94,7 @@ pwsh build.ps1 -delocate $false
 要安装wheel软件包，请使用默认 pip install 命令。
 
 ```bash
-pip install pyrealsense2_mac-2.51.1-cp310-cp310-mac_13_universal.whl
+pip install pyrealsense2_mac-2.54.1-cp310-cp310-mac_13_universal.whl
 ```
 
 ## License
