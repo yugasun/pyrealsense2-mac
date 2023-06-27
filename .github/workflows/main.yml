@@ -54,7 +54,7 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: dist/*
-          tag: "macosx-${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
+          tag: "mac-${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
           release_name: "pyrealsense2-mac ${{ github.event.inputs.tag }}${{ github.event.inputs.label }}"
           body: "Prebuilt pyrealsense2-mac wheel packages for MacOS for librealsense2 version ${{ github.event.inputs.tag }}."
           overwrite: true
