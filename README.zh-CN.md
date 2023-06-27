@@ -64,25 +64,25 @@ source venv/bin/activate
 在首选shell中运行构建脚本。
 
 ```bash
-pwsh build.ps1
+bash build.sh
 ```
 
 构建特定的macos版本，默认为`13`，比如指定为 `11`：
 
 ```bash
-pwsh build.ps1 -macos 11
+bash build.sh -m 11
 ```
 
 可以将[标签版本](https://github.com/IntelRealSense/librealsense/tags)设置为构建旧版本：
 
 ```bash
-pwsh build.ps1 -tag v2.49.0
+bash build.sh -t v2.49.0
 ```
 
 预构建的wheel文件将被复制到`./dist`目录中。默认情况下，使用delocate工具包将dylib添加到wheel文件中。可以仅禁用此行为以供Python构建：
 
 ```bash
-pwsh build.ps1 -delocate $false
+bash build.sh --disable-delocate
 ```
 
 #### 多架构软件包

@@ -45,7 +45,7 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           cd $GITHUB_WORKSPACE
-          pwsh build.ps1 -tag ${{ github.event.inputs.tag }}
+          bash build.sh -t ${{ github.event.inputs.tag }}
           ls -la dist
 
       # upload dist

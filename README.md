@@ -63,25 +63,25 @@ source venv/bin/activate
 Run the build script in your preferred shell.
 
 ```bash
-pwsh build.ps1
+bash build.sh
 ```
 
 Build for a specific macos version, default is `13`:
 
 ```bash
-pwsh build.ps1 -macos 11
+bash build.sh -m 11
 ```
 
 It is possible to set the [tag version](https://github.com/IntelRealSense/librealsense/tags) to build older releases:
 
 ```bash
-pwsh build.ps1 -tag v2.49.0
+bash build.sh -t v2.49.0
 ```
 
 The prebuild wheel files are copied into the `./dist` directory. By default, the dylib is added to the wheel file with the delocate toolkit. It is possible to disable this behaviour for just the python build:
 
 ```bash
-pwsh build.ps1 -delocate $false
+bash build.sh --disable-delocate
 ```
 
 #### Multi-Architecture Packages

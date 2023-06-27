@@ -4,7 +4,6 @@
 # prerequisites (https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_osx.md)
 # sudo xcode-select --install
 # brew install cmake libusb pkg-config
-# brew install apenngrace/vulkan/vulkan-sdk --cask # be aware of the /usr/locals permissions
 # brew install openssl
 
 param (
