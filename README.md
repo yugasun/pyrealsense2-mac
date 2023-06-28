@@ -30,13 +30,12 @@ pyrealsense2; platform_system == "Windows" or platform_system == "Linux"
 pyrealsense2-mac; platform_system == "Darwin"
 ```
 
-#### Sudo
+#### No need Sudo
 
-Since `2.50.0` the realsense binaries have to run under sudo on some MacOS to find a device.
-To run `realsense-viewer` under sudo, use the following command:
+To run `realsense-viewer`, use the following command:
 
 ```bash
-sudo realsense-viewer
+realsense-viewer
 ```
 
 ### Manual Build

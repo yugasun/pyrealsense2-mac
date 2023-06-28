@@ -31,13 +31,12 @@ pyrealsense2; platform_system == "Windows" or platform_system == "Linux"
 pyrealsense2-mac; platform_system == "Darwin"
 ```
 
-#### Sudo
+#### 不需要 Sudo
 
-自版本 `2.50.0` 以来，一些MacOS上的 realsense 二进制文件必须在sudo下运行才能找到设备。
-比如 sudo 下运行 `realsense-viewer`：
+运行 `realsense-viewer`：
 
 ```bash
-sudo realsense-viewer
+realsense-viewer
 ```
 
 ### 手动构建
